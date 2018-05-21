@@ -2,7 +2,15 @@
   "name": "Reviews",
   "version": "1.0",
   "description": "Get additional product reviews",
-  "permissions": ["https://www.walmart.com/*", "activeTab", "declarativeContent", "storage"],
+  "permissions": [
+    "https://www.walmart.com/*",
+    "http://www.walmart.com/*",
+    "https://www.amazon.com/*",
+    "http://www.amazon.com/*",
+    "activeTab",
+    "declarativeContent",
+    "storage"
+  ],
   "background": {
     "scripts": ["background.js"],
     "persistent": false
