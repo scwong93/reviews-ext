@@ -1,26 +1,20 @@
-fetch("https://api.walmartlabs.com/v1/search?apiKey=vck5ypdbw4jnhuceesmjjce5&query=NETGEAR&format=json&callback=foo")
+fetch("https://api.walmartlabs.com/v1/search?apiKey=vck5ypdbw4jnhuceesmjjce5&query=NETGEAR&format=json")
 .then(function (response) {
-  console.log(response);
-    response.text().then(function (responseText) {
-        console.log(responseText);
-        alert("Found the product");
-    });
+    return response.json();
 }).then(function (responseText) {
   if (responseText) {
-    var product = responseText[0];
-    console.log(product)
+    var product = responseText.items[0];
     var itemId = product.itemId;
-    console.log(itemId);
-    fetch(`https://api.walmartlabs.com/v1/reviews/${itemId}?apiKey=vck5ypdbw4jnhuceesmjjce5&format=json&callback=foo`)
+    fetch(`https://api.walmartlabs.com/v1/reviews/${itemId}?apiKey=vck5ypdbw4jnhuceesmjjce5&format=json`)
     .then(function (response) {
-        response.text().then(function (responseText) {
-        });
+        return response.json();
     }).then(function (responseText) {
       var reviews = document.getElementById('reviews');
-      var walmartReviews = responseText.reviewText
+      console.log(reviews);
+      var walmartReviews = responseText.reviews
       for (i in walmartReviews) {
         let li = document.createElement('li');
-        li.innerHTML = walmartsReviews[i];
+        li.innerHTML = walmartReviews[i].reviewText;
         reviews.append(li);
       }
     });
