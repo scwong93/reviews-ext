@@ -1,22 +1,37 @@
 {
-  "name": "Reviews",
+  "name": "Reviews Extension",
   "version": "1.0",
-  "description": "Get additional product reviews",
+  "description": "Get additional reviews from third party retailers",
   "permissions": [
-    "https://www.walmart.com/*",
-    "http://www.walmart.com/*",
-    "https://www.amazon.com/*",
-    "http://www.amazon.com/*",
+    "https://api.walmartlabs.com/",
+    "https://www.amazon.com/",
     "activeTab",
     "declarativeContent",
     "storage"
   ],
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": ["content.js"]
+    }
+  ],
+  "options_page": "options.html",
   "background": {
-    "scripts": ["background.js"],
+    "scripts": [
+      "background.js"
+    ],
     "persistent": false
   },
   "page_action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/get_started16.png",
+      "32": "images/get_started32.png",
+      "48": "images/get_started48.png",
+      "128": "images/get_started128.png"
+    }
   },
   "icons": {
     "16": "images/get_started16.png",
@@ -24,10 +39,5 @@
     "48": "images/get_started48.png",
     "128": "images/get_started128.png"
   },
-  "content_scripts": [{
-       "matches": ["<all_urls>"],
-       "all_frames": true,
-       "js":      ["content.js"]
-   }],
   "manifest_version": 2
 }
