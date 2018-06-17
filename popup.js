@@ -4,11 +4,13 @@ let getItems = document.getElementById('reviews-btn');
 let productTitle = document.getElementById('productTitle');
 
 getItems.onclick = () => {
-  fetch("https://api.walmartlabs.com/v1/search?apiKey=vck5ypdbw4jnhuceesmjjce5&query=NETGEAR&format=json")
+  fetch("https://api.walmartlabs.com/v1/search?apiKey=vck5ypdbw4jnhuceesmjjce5&query="+productTitle+"&format=json")
     .then(function (response) {
+      console.log(response);
       return response.json();
     }).then(function (responseText) {
       if (responseText) {
+        console.log(responseText);
         var product = responseText.items[0];
         var itemId = product.itemId;
         fetch(`https://api.walmartlabs.com/v1/reviews/${itemId}?apiKey=vck5ypdbw4jnhuceesmjjce5&format=json`)

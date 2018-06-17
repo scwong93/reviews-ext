@@ -4,7 +4,7 @@
   "description": "Get additional reviews from third party retailers",
   "permissions": [
     "https://api.walmartlabs.com/",
-    "https://www.amazon.com/",
+    "https://*.amazon.com/*",
     "activeTab",
     "declarativeContent",
     "storage"
