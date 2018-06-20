@@ -1,7 +1,17 @@
 'use strict';
 
+var productTitle;
+
+chrome.extension.onMessage.addListener(
+  function(request, sender, sendResponse) {
+    if (request.message) {
+      productTitle = request.message;
+      console.log(request.message);
+    }
+  }
+);
+
 let getItems = document.getElementById('reviews-btn');
-let productTitle = document.getElementById('productTitle');
 
 getItems.onclick = () => {
   fetch("https://api.walmartlabs.com/v1/search?apiKey=vck5ypdbw4jnhuceesmjjce5&query="+productTitle+"&format=json")
