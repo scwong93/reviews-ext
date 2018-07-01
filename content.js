@@ -7,5 +7,4 @@
 
 var extensionId = "kcpllmimpckifppeknmiakaiaabllkcg";
 var productTitle = document.getElementById('productTitle').innerHTML.trim();
-console.log(productTitle);
 chrome.runtime.sendMessage(extensionId, {"message": productTitle});
